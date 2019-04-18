@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<div class="container p-5">
+    <div class="row justify-content-md-center">
+        <div class="center-block" style="width: 25%">
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="inputLogin">Username</label>
+                    <input type="text" name="username" class="form-control" id="inputLogin" aria-describedby="loginHelp" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>   
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}Search Books{% endblock %}
+{% block body %}
+<div class="row p-5">
+    <div class="col-12 col-md-8">
+        <form class="form-inline my-auto my-lg-0" action="/" method="POST">
+            <input class="form-control mr-sm-2" name="search" style="width: 450px" type="text" placeholder="Enter book's isbn, title or author's name">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search books</button>
+        </form>
+    </div>
+</div>
+<div class="row align-items-start p-5">
+    {% if noitems %}
+    <div class="col align-self-start">
+        <p>No items found.</p>
+    </div>
+    {% else %}
+    <ul>
+    {% for book in books %}
+        <li><a href="{{ url_for('bookinfo', isbn=book.isbn) }}">{{ book.isbn }}, {{ book.title }}, {{ book.author }}, {{ book.year }}</a></li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

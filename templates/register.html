@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="container p-5">
+    <div class="row justify-content-md-center">
+        <div class="center-block" style="width: 40%">
+            <form action="/register" method="POST">
+                <div class="form-group" id="unText">
+                    <label for="inputUsername">Username</label>
+                    <input type="text" name="username" class="form-control" id="inputUsername" aria-describedby="loginHelp" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="repassword" class="form-control" id="inputRepassword" placeholder="Re-enter your password">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>   
+            </form>
+            <script>
+                window.onload = function() {
+                    document.onsubmit = function(){                    
+                        if (document.querySelector("#inputUsername").value.length < 4) {
+                            if (document.querySelector("#iunmsg") == null){
+                                iu_error = document.createElement("small")
+                                iu_error.setAttribute("id", "unemsg")
+                                errormsg = document.createTextNode("Username is too short")
+                                iu_error.appendChild(errormsg)
+                                formelement = document.querySelector("#unText")
+                                formelement.appendChild(iu_error)
+                                iu_error.style.color = "red"
+                                iu_error.setAttribute("id", "iunmsg")
+                                return false
+                            }
+                            return false
+                        }
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Search Books{% endblock %}
+{% block body %}
+<div class="row p-5">
+    <div class="col-12 col-md-8">
+        <form class="form-inline my-auto my-lg-0" action="/api">
+            <input class="form-control mr-sm-2" style="width: 450px" type="text" placeholder="Enter book's isbn, title or author's name" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    <ul>
+    {% for book in books %}
+        <li><a href="/api/{{ book.isbn }}">{{ book.isbn }}, {{ book.title }}, {{ book.author }}, {{ book.year }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
